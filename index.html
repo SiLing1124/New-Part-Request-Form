@@ -58,8 +58,7 @@
         }
 
         .form-group input,
-        .form-group select,
-        .form-group textarea {
+        .form-group select {
             flex: 3 0 300px;
             padding: 10px;
             border: 1px solid #ccc;
@@ -69,19 +68,13 @@
         }
 
         .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
+        .form-group select:focus {
             border-color: #6aa9ff;
             box-shadow: 0 0 8px rgba(106, 169, 255, 0.4);
         }
 
         .form-group input[type="file"] {
             padding: 3px;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
         }
 
         .form-actions {
@@ -113,15 +106,13 @@
 
             .form-group label,
             .form-group input,
-            .form-group select,
-            .form-group textarea {
+            .form-group select {
                 flex: 1 0 auto;
                 margin-bottom: 10px;
             }
 
             .form-group input,
-            .form-group select,
-            .form-group textarea {
+            .form-group select {
                 margin-right: 0;
             }
         }
@@ -150,18 +141,6 @@
     <div class="container">
         <h1>零件申請表</h1>
         <form>
-            <div class="form-group">
-                <label for="partName">零件名稱：</label>
-                <input type="text" id="partName" name="partName" required>
-            </div>
-            <div class="form-group">
-                <label for="manufacturer">製造商：</label>
-                <input type="text" id="manufacturer" name="manufacturer" required>
-            </div>
-            <div class="form-group">
-                <label for="manufacturerPartNumber">製造商料號：</label>
-                <input type="text" id="manufacturerPartNumber" name="manufacturerPartNumber" required>
-            </div>
             <div class="form-group">
                 <label for="category">分類：</label>
                 <select id="category" name="category" required>
@@ -197,8 +176,21 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="specifications">規格：</label>
-                <textarea id="specifications" name="specifications" placeholder="輸入規格..."></textarea>
+                <label for="partNumber">料號：</label>
+                <input type="text" id="partNumber" name="partNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="manufacturer">零件製造商：</label>
+                <select id="manufacturer" name="manufacturer" required>
+                    <option value="">選擇製造商</option>
+                    <option value="三星">三星</option>
+                    <option value="murata">murata</option>
+                    <option value="KEYCERA">KEYCERA</option>
+                    <option value="太陽誘電">太陽誘電</option>
+                    <option value="國巨">國巨</option>
+                    <option value="Little Fuse">Little Fuse</option>
+                    <option value="德州儀器">德州儀器</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="datasheet">上傳規格書：</label>
