@@ -13,12 +13,14 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            /* 使用白色、黃色和藍色的漸變背景，對比度較低 */
+            background: linear-gradient(to right, #FFFFFF, #F7D300, #0047AB);
             padding: 20px;
+            position: relative; /* 為了定位 LOGO */
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px; /* 調整表單的最大寬度 */
             margin: 0 auto;
             background: white;
             border-radius: 8px;
@@ -107,9 +109,27 @@
                 margin-right: 0;
             }
         }
+
+        /* 公司 LOGO */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 150px; /* LOGO 寬度 */
+        }
+
+        /* 版權聲明 */
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #555;
+        }
     </style>
 </head>
 <body>
+    <img src="https://www.istgroup.com/tw/wp-content/uploads/2017/04/wb-ist-logo_1.png" alt="公司 LOGO" class="logo">
+
     <div class="container">
         <h1>零件申請表</h1>
         <form>
@@ -129,14 +149,34 @@
                 <label for="category">分類：</label>
                 <select id="category" name="category" required>
                     <option value="">選擇分類</option>
-                    <option value="Resistor">電阻</option>
-                    <option value="Capacitor">電容</option>
-                    <option value="Inductor">電感</option>
-                    <option value="Integrated Circuit">積體電路</option>
-                    <option value="Transistor">電晶體</option>
-                    <option value="Diode">二極體</option>
-                    <option value="Connector">連接器</option>
-                    <option value="Other">其他</option>
+                    <option value="001">001-專案類</option>
+                    <option value="002">002-PCB 規格類</option>
+                    <option value="003">003-鋁框類</option>
+                    <option value="004">004-Socket類</option>
+                    <option value="005-SMD-Resistor">005-SMD-電阻類</option>
+                    <option value="005-DIP-Resistor">005-DIP-電阻類</option>
+                    <option value="006-SMD-Capacitor">006-SMD-電容類</option>
+                    <option value="006-DIP-Capacitor">006-DIP-電容類</option>
+                    <option value="006-Tantalum-Capacitor">006-鉭電容類</option>
+                    <option value="006-Aluminum-Electrolytic-Capacitor">006-鋁質電解電容類</option>
+                    <option value="007-SMD-Inductor">007-SMD-電感類</option>
+                    <option value="007-DIP-Inductor">007-DIP-電感類</option>
+                    <option value="008-SMD-Bead">008-SMD-磁珠類</option>
+                    <option value="008-DIP-Bead">008-DIP-磁珠類</option>
+                    <option value="009-Connector">009-一般連接器類（Connector）</option>
+                    <option value="010-Special-Connector">010-特殊連接器類（Special Connector）</option>
+                    <option value="011-Diode">011-二極體類</option>
+                    <option value="012-Transistor">012-電晶體類</option>
+                    <option value="013-Crystal">013-晶體類（Crystal）</option>
+                    <option value="014-Oscillator">014-振盪器類（Oscillator）</option>
+                    <option value="015-Voltage-Regulator">015-穩壓器類（Voltage REG）</option>
+                    <option value="016-Switch">016-開關類（Switch）</option>
+                    <option value="017-IC-Switch">017-IC Switch</option>
+                    <option value="018-Fuse">018-FUSE類</option>
+                    <option value="019-Relay">019-繼電器類（Relay）</option>
+                    <option value="020-Other">020-其他類（Other）</option>
+                    <option value="021-IC-Other">021-其他類 IC（IC-Other）</option>
+                    <option value="022-Module">022-模組類（Module）</option>
                 </select>
             </div>
             <div class="form-group">
@@ -145,7 +185,7 @@
             </div>
             <div class="form-group">
                 <label for="datasheet">上傳規格書：</label>
-                <input type="file" id="datasheet" name="datasheet" accept=".pdf">
+                <input type="file" id="datasheet" name="datasheet" accept=".pdf" required>
             </div>
             <div class="form-group">
                 <label for="requesterName">申請人姓名：</label>
@@ -160,5 +200,9 @@
             </div>
         </form>
     </div>
+
+    <footer>
+        ©2024 New Part Application form by iST/IntegratedService Technology. All rights reserved.
+    </footer>
 </body>
 </html>
