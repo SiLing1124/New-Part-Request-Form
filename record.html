@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>送出紀錄</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 90%;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>送出紀錄</h1>
+    <table id="recordsTable">
+        <thead>
+            <tr>
+                <th>分類</th>
+                <th>料號</th>
+                <th>零件製造商</th>
+                <th>申請人姓名</th>
+                <th>申請人信箱</th>
+                <th>時間戳記</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 紀錄將會在此處插入 -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function loadRecords() {
+        const records = JSON.parse(localStorage.getItem('partRecords')) || [];
+        const tableBody = document.getElementById('recordsTable').getElementsByTagName('tbody')[0];
+        tableBody.innerHTML = ''; // 清空表格內容
+
+        records.forEach(record => {
+            const row = tableBody.insertRow();
+            row.insertCell(0).innerText = record.category;
+            row.insertCell(1).innerText = record.partNumber;
+            row.insertCell(2).innerText = record.manufacturer;
+            row.insertCell(3).innerText = record.requesterName;
+            row.insertCell(4).innerText = record.requesterEmail;
+            row.insertCell(5).innerText = new Date(record.timestamp).toLocaleString();
+        });
+    }
+
+    // 載入紀錄
+    loadRecords();
+</script>
+
+</body>
+</html>
