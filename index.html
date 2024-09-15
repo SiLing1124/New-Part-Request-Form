@@ -140,7 +140,7 @@
 
     <div class="container">
         <h1>零件申請表</h1>
-        <form>
+        <form id="partForm">
             <div class="form-group">
                 <label for="category">分類：</label>
                 <select id="category" name="category" required>
@@ -197,7 +197,7 @@
                 <input type="file" id="datasheet" name="datasheet" accept=".pdf" required>
             </div>
             <div class="form-group">
-                <label for="requesterName">申請人：</label>
+                <label for="requesterName">申請人姓名：</label>
                 <input type="text" id="requesterName" name="requesterName" required>
             </div>
             <div class="form-group">
@@ -213,5 +213,40 @@
     <footer>
         ©2024 New Part Application form by iST/IntegratedService Technology. All rights reserved.
     </footer>
+
+    <script>
+        document.getElementById('partForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // 阻止表單提交
+
+            // 獲取表單數據
+            const category = document.getElementById('category').value;
+            const partNumber = document.getElementById('partNumber').value;
+            const manufacturer = document.getElementById('manufacturer').value;
+            const requesterName = document.getElementById('requesterName').value;
+            const requesterEmail = document.getElementById('requesterEmail').value;
+
+            // 創建記錄物件
+            const record = {
+                category,
+                partNumber,
+                manufacturer,
+                requesterName,
+                requesterEmail,
+                timestamp: new Date().toISOString()
+            };
+
+            // 讀取現有的紀錄
+            let records = JSON.parse(localStorage.getItem('partRecords')) || [];
+            records.push(record);
+
+            // 存入localStorage
+            localStorage.setItem('partRecords', JSON.stringify(records));
+
+            // 清空表單
+            this.reset();
+
+            alert('申請已提交並記錄！');
+        });
+    </script>
 </body>
 </html>
