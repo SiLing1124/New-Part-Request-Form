@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>零件申請表</title>
+    <style>
+        /* CSS 重設 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f9f7e8, #f0e4d7, #cfe7ff); /* 淡黃色與淡藍色漸變背景 */
+            padding: 20px;
+            position: relative; /* 為了定位 LOGO */
+            min-height: 100vh; /* 保證背景覆蓋整個視窗 */
+            display: flex;
+            flex-direction: column;
+            background-size: cover;
+            background-attachment: fixed; /* 背景固定 */
+        }
+
+        .container {
+            max-width: 90%; /* 設置寬度為 90% */
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9); /* 半透明背景 */
+            border-radius: 16px; /* 調整圓角更柔和 */
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 1200px; /* 限制最大寬度 */
+            flex: 1; /* 讓 container 填滿空間 */
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .form-group label {
+            flex: 1 0 150px;
+            padding: 10px;
+            color: #555;
+        }
+
+        .form-group input,
+        .form-group select {
+            flex: 3 0 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px; /* 調整圓角 */
+            margin-right: 10px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #6aa9ff;
+            box-shadow: 0 0 8px rgba(106, 169, 255, 0.4);
+        }
+
+        .form-group input[type="file"] {
+            padding: 3px;
+        }
+
+        .form-actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .form-actions button {
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            color: #333;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .form-actions button:hover {
+            background: linear-gradient(to right, #ACB6E5, #74ebd5);
+            transform: scale(1.05); /* 輕微放大效果 */
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 600px) {
+            .form-group {
+                flex-direction: column;
+            }
+
+            .form-group label,
+            .form-group input,
+            .form-group select {
+                flex: 1 0 auto;
+                margin-bottom: 10px;
+            }
+
+            .form-group input,
+            .form-group select {
+                margin-right: 0;
+            }
+        }
+
+        /* 公司 LOGO */
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 150px; /* LOGO 寬度 */
+        }
+
+        /* 版權聲明 */
+        footer {
+            text-align: center;
+            margin-top: auto;
+            font-size: 14px;
+            color: #555;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://www.istgroup.com/tw/wp-content/uploads/2017/04/wb-ist-logo_1.png" alt="公司 LOGO" class="logo">
+
+    <div class="container">
+        <h1>零件申請表</h1>
+        <form id="partForm">
+            <div class="form-group">
+                <label for="category">分類：</label>
+                <select id="category" name="category" required>
+                    <option value="">選擇分類</option>
+                    <option value="001">001-專案類</option>
+                    <option value="002">002-PCB 規格類</option>
+                    <option value="003">003-鋁框類</option>
+                    <option value="004">004-Socket類</option>
+                    <option value="005-SMD-Resistor">005-SMD-電阻類</option>
+                    <option value="005-DIP-Resistor">005-DIP-電阻類</option>
+                    <option value="006-SMD-Capacitor">006-SMD-電容類</option>
+                    <option value="006-DIP-Capacitor">006-DIP-電容類</option>
+                    <option value="006-Tantalum-Capacitor">006-鉭電容類</option>
+                    <option value="006-Aluminum-Electrolytic-Capacitor">006-鋁質電解電容類</option>
+                    <option value="007-SMD-Inductor">007-SMD-電感類</option>
+                    <option value="007-DIP-Inductor">007-DIP-電感類</option>
+                    <option value="008-SMD-Bead">008-SMD-磁珠類</option>
+                    <option value="008-DIP-Bead">008-DIP-磁珠類</option>
+                    <option value="009-Connector">009-一般連接器類（Connector）</option>
+                    <option value="010-Special-Connector">010-特殊連接器類（Special Connector）</option>
+                    <option value="011-Diode">011-二極體類</option>
+                    <option value="012-Transistor">012-電晶體類</option>
+                    <option value="013-Crystal">013-晶體類（Crystal）</option>
+                    <option value="014-Oscillator">014-振盪器類（Oscillator）</option>
+                    <option value="015-Voltage-Regulator">015-穩壓器類（Voltage REG）</option>
+                    <option value="016-Switch">016-開關類（Switch）</option>
+                    <option value="017-IC-Switch">017-IC Switch</option>
+                    <option value="018-Fuse">018-FUSE類</option>
+                    <option value="019-Relay">019-繼電器類（Relay）</option>
+                    <option value="020-Other">020-其他類（Other）</option>
+                    <option value="021-IC-Other">021-其他類 IC（IC-Other）</option>
+                    <option value="022-Module">022-模組類（Module）</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="partNumber">料號：</label>
+                <input type="text" id="partNumber" name="partNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="manufacturer">零件製造商：</label>
+                <select id="manufacturer" name="manufacturer" required>
+                    <option value="">選擇製造商</option>
+                    <option value="三星">三星</option>
+                    <option value="murata">murata</option>
+                    <option value="KEYCERA">KEYCERA</option>
+                    <option value="太陽誘電">太陽誘電</option>
+                    <option value="國巨">國巨</option>
+                    <option value="Little Fuse">Little Fuse</option>
+                    <option value="德州儀器">德州儀器</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="datasheet">上傳規格書：</label>
+                <input type="file" id="datasheet" name="datasheet" accept=".pdf" required>
+            </div>
+            <div class="form-group">
+                <label for="requesterName">申請人姓名：</label>
+                <input type="text" id="requesterName" name="requesterName" required>
+            </div>
+            <div class="form-group">
+                <label for="requesterEmail">申請人信箱：</label>
+                <input type="email" id="requesterEmail" name="requesterEmail" required>
+            </div>
+            <div class="form-actions">
+                <button type="submit">提交申請</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        ©2024 New Part Application form by iST/IntegratedService Technology. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById('partForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // 阻止表單提交
+
+            // 獲取表單數據
+            const category = document.getElementById('category').value;
+            const partNumber = document.getElementById('partNumber').value;
+            const manufacturer = document.getElementById('manufacturer').value;
+            const requesterName = document.getElementById('requesterName').value;
+            const requesterEmail = document.getElementById('requesterEmail').value;
+
+            // 創建記錄物件
+            const record = {
+                category,
+                partNumber,
+                manufacturer,
+                requesterName,
+                requesterEmail,
+                timestamp: new Date().toISOString()
+            };
+
+            // 讀取現有的紀錄
+            let records = JSON.parse(localStorage.getItem('partRecords')) || [];
+            records.push(record);
+
+            // 存入localStorage
+            localStorage.setItem('partRecords', JSON.stringify(records));
+
+            // 清空表單
+            this.reset();
+
+            alert('申請已提交並記錄！');
+        });
+    </script>
+</body>
+</html>
